@@ -1,38 +1,64 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* DarkBlue: 'hsl(233, 26%, 24%)',
+          LimeGreen: 'hsl(136, 65%, 51%)',
+          BrightCyan: 'hsl(192, 70%, 51%)',
+          GrayishBlue: 'hsl(233, 8%, 62%)',
+          LightGrayishBlue: 'hsl(220, 16%, 96%)',
+          VeryLightGray: 'hsl(0, 0%, 98%)',
+          White: 'hsl(0, 0%, 100%)', */
+:root{
+    --Dark-Blue: hsl(233, 26%, 24%);
+    --Lime-Green: hsl(136, 65%, 51%);
+    --Bright-Cyan: hsl(192, 70%, 51%);
+   --Grayish-Blue: hsl(233, 8%, 62%);
+    --Light-Grayish-Blue: hsl(220, 16%, 96%);
+    --Very-Light-Gray: hsl(0, 0%, 98%);
+    --White: hsl(0, 0%, 100%);
+
+    --family: "Public Sans";
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* utilities */
+
+.cta{
+    background-image: linear-gradient(to right, var(--Lime-Green),var(--Bright-Cyan) );
+    color: #fff;
+    border-radius: 20px;
+    font-family: var(--family);
+}
+/* utilities */
+
+
+/* hero section */
+
+.hero .inner-container{
+    background-image: url("./assets/images/bg-intro-desktop.svg");
+    background-position: right top;
+    background-size: 60%;
+    background-repeat: no-repeat;
+    font-family: var(--family);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.hero{
+    h1{
+        color: var(--Dark-Blue);
+    }
+    p{
+        color: var(--Grayish-Blue);
+    }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+/* hero section */
 
-.App-link {
-  color: #61dafb;
+@media screen and (max-width: 500px) {
+    /* hero section */
+   .hero .inner-container{
+    background-image: url("./assets/images/bg-intro-mobile.svg");
+   }
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+    
