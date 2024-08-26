@@ -6,8 +6,8 @@ function Footer(){
     return(
         <>
         <div className="footer container w-full bg-primary-DarkBlue flex p-16 items-center justify-center ">
-            <div className="inner-container w-10/12 flex  flex-col sm:flex-row justify-between items-center">
-                <div className="flex flex-col sm:flex-row gap-28 text-white">
+            <div className="inner-container w-10/12 flex  flex-col sm:flex-row sm:justify-between  justify-center items-center">
+                <div className="flex flex-col sm:flex-row sm:gap-28 gap-2 text-white">
                     <div>
                     <div className="flex-shrink-0 logo flex items-center justify-center">
                         <a href="#" className="ml-[-10px] text-xl font-bold text-white">
