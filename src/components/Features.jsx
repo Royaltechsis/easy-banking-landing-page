@@ -9,7 +9,7 @@ import { ReactComponent as Onboarding } from "../assets/images/icon-onboarding.s
 function Fitem({image, title, desc}) {
     return(
         <>
-            <div className="item w-11/12 flex flex-col gap-3 justify-center items-center lg:w-2/12 md:w-5/12 md:justify-start md:items-start">
+            <div className="item sm:w-11/12  w-3/4 flex flex-col gap-3 justify-center items-center lg:w-2/12 md:w-5/12 md:justify-start md:items-start">
                 <div className="img">{image}</div>
                 <h3 className="feature-title text-2xl text-primary-DarkBlue">{title}</h3>
                 <p className="feature-desc text-primary-GrayishBlue ">{desc}</p>
@@ -56,8 +56,8 @@ function Features(){
             <div className="inner-container flex flex-col w-full  p-5 justify-center pb-14 pt-14">
                 <div className="mb-10 flex items-center justify-center">
                     <div className="top flex flex-col gap-6 w-10/12">
-                        <h1 className="text-5xl text-primary-DarkBlue">Why Choose Easybank?</h1>
-                        <p className="flex w-4/6 text-primary-GrayishBlue">We leverage Open Banking to turn your bank account into your financial hub.<br></br> Control 
+                        <h1 className="text-5xl text-primary-DarkBlue sm:text-left text-center">Why Choose Easybank?</h1>
+                        <p className="flex sm:w-4/6 text-primary-GrayishBlue sm:text-left text-center">We leverage Open Banking to turn your bank account into your financial hub.<br></br> Control 
                         your finances like never before.</p>
                         
                     </div>
