@@ -6,7 +6,7 @@ function Footer(){
     return(
         <>
         <div className="footer container w-full bg-primary-DarkBlue flex p-16 items-center justify-center ">
-            <div className="inner-container w-10/12 flex justify-between items-center">
+            <div className="inner-container w-10/12 flex  flex-col sm:flex-row justify-between items-center">
                 <div className="flex flex-col sm:flex-row gap-28 text-white">
                     <div>
                     <div className="flex-shrink-0 logo flex items-center justify-center">
@@ -16,12 +16,12 @@ function Footer(){
                     </div>
                         <div className="logo-list"></div>
                     </div>
-                    <ul className="flex flex-col gap-4">
+                    <ul className="flex flex-col sm:gap-4">
                         <li>About Us</li>
                         <li>contact</li>
                         <li>blog</li>
                     </ul>
-                    <ul className="flex flex-col gap-4">
+                    <ul className="flex flex-col sm:gap-4">
                         <li>Career</li>
                         <li>Support</li>
                         <li>Privacy policy</li>
