@@ -1,73 +1,67 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { ReactComponent as Logo } from "../assets/images/logo.svg";
 
 function Navbar() {
-  // Use useEffect to add Event Listener after the component mounts
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   useEffect(() => {
-    const menuButton = document.getElementById("menu-button");
-    const mobileMenu = document.getElementById("mobile-menu");
+    const handleResize = () => {
+      if (window.innerWidth >= 768 && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
 
-    if (menuButton && mobileMenu) {
-      // Toggle the transform class for sliding effect from top
-      const toggleMenu = () => {
-        mobileMenu.classList.toggle("-translate-y-full");
-        mobileMenu.classList.toggle("translate-y-0");
-      };
+    window.addEventListener('resize', handleResize);
 
-      menuButton.addEventListener("click", toggleMenu);
-
-      // Cleanup the event listener when the component unmounts
-      return () => {
-        menuButton.removeEventListener("click", toggleMenu);
-      };
-    }
-  }, []); // Empty dependency array means this runs once after mount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [isMenuOpen]);
 
   return (
     <>
       <nav className="bg-white flex w-full">
         <div className="container px-4 flex w-full">
           <div className="flex items-center justify-between h-16 w-full p-3">
-            {/* logo section */}
+            {/* Logo Section */}
             <div className="flex-shrink-0 logo flex items-center justify-center">
-              <a href="#" className="ml-[-10px] text-xl font-bold text-gray-800">
+              <a href="#" className="text-xl font-bold text-gray-800">
                 <Logo />
               </a>
             </div>
 
-            {/* links section */}
+            {/* Desktop Links Section */}
             <div className="hidden md:flex md:space-x-8 nav-links">
-              <a href="#" className="text-gray-700" style={{ fontSize: "15px" }}>
-                Home
-              </a>
-              <a href="#" className="text-gray-700" style={{ fontSize: "15px" }}>
-                About
-              </a>
-              <a href="#" className="text-gray-700" style={{ fontSize: "15px" }}>
-                Contact
-              </a>
-              <a href="#" className="text-gray-700" style={{ fontSize: "15px" }}>
-                Blogs
-              </a>
-              <a href="#" className="text-gray-700" style={{ fontSize: "15px" }}>
-                Careers
-              </a>
+              {["Home", "About", "Contact", "Blogs", "Careers"].map((link, index) => (
+                <a
+                  key={index}
+                  href="#"
+                  className="text-gray-700 text-sm hover:text-blue-600 transition-colors"
+                >
+                  {link}
+                </a>
+              ))}
             </div>
 
-            {/* mobile menu buttons */}
-            <div className="hidden md:flex md:space-x-4">
+            {/* Desktop CTA Button */}
+            <div className="hidden md:flex">
               <a
                 href="login.php"
-                className="header-cta cta px-4 py-2 rounded text-sm"
+                className="px-4 py-2 rounded text-sm bg-blue-500 text-white hover:bg-blue-600 transition-colors"
               >
                 Request Invite
               </a>
             </div>
 
-            {/* mobile menu button */}
-            <div className="md:hidden z-10">
+            {/* Mobile Menu Button */}
+            <div className="md:hidden z-30">
               <button
-                id="menu-button"
+                onClick={toggleMenu}
+                aria-label="Toggle Menu"
                 className="text-gray-700 focus:outline-none focus:text-blue-600"
               >
                 <svg
@@ -87,30 +81,34 @@ function Navbar() {
               </button>
             </div>
 
-            {/* mobile menu */}
+            {/* Mobile Menu */}
             <div
-              id="mobile-menu"
-              className="fixed top-0 left-0 w-full h-full bg-white bg-opacity-90 shadow-lg transform -translate-y-full transition-transform duration-300 ease-in-out flex flex-col space-y-1 p-4 z-50"
+              className={`fixed top-0 left-0 w-full h-full bg-white bg-opacity-90 shadow-lg transform ${
+                isMenuOpen ? 'translate-y-0' : '-translate-y-full'
+              } transition-transform duration-300 ease-in-out flex flex-col space-y-1 p-4 z-50`}
             >
-              <a href="#" className="text-gray-700">
-                Home
-              </a>
-              <a href="#" className="text-gray-700">
-                About
-              </a>
-              <a href="#" className="text-gray-700">
-                Investment
-              </a>
-              <a href="#" className="text-gray-700">
-                Testimonial
-              </a>
-              <a href="#" className="text-gray-700">
-                Contact
-              </a>
-              <a href="#" className="bg-gray-300 text-gray-800 px-4 py-2 rounded">
+              {["Home", "About", "Investment", "Testimonial", "Contact"].map((link, index) => (
+                <a
+                  key={index}
+                  href="#"
+                  className="text-gray-700 text-lg hover:text-blue-600 transition-colors"
+                  onClick={toggleMenu}
+                >
+                  {link}
+                </a>
+              ))}
+              <a
+                href="#"
+                className="bg-gray-300 text-gray-800 px-4 py-2 rounded text-lg hover:bg-gray-400 transition-colors"
+                onClick={toggleMenu}
+              >
                 Sign In
               </a>
-              <a href="#" className="register">
+              <a 
+                href="#" 
+                className="text-gray-700 text-lg hover:text-blue-600 transition-colors"
+                onClick={toggleMenu}
+              >
                 Register
               </a>
             </div>
