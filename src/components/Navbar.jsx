@@ -48,13 +48,8 @@ function Navbar() {
             </div>
 
             {/* Desktop CTA Button */}
-            <div className="hidden md:flex">
-              <a
-                href="login.php"
-                className="px-4 py-2 rounded text-sm bg-blue-500 text-white hover:bg-blue-600 transition-colors"
-              >
-                Request Invite
-              </a>
+            <div className="hidden md:flex md:space-x-4">
+              <a href="login.php" className="header-cta cta px-4 py-2 rounded text-sm"> Request Invite</a>
             </div>
 
             {/* Mobile Menu Button */}
